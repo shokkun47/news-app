@@ -1,13 +1,13 @@
-import { StyleSheet, Image, View, Text } from 'react-native';
+import { StyleSheet, Image, View, Text, TouchableOpacity, } from 'react-native';
 
 export const ListItem = (props) => {
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer}  onPress={props.onPress}>
       <View style={styles.leftContainer}>
         <Image
           style={{ width: 100, height: 100 }}
-          source={{ url: props.imageURL }}
-      />
+          source={{ uri: props.imageURL || 'https://via.placeholder.com/100' }} 
+        />
       </View>
       <View style={styles.rightContainer}>
         <Text numberOfLines={3} style={styles.text}>
@@ -17,7 +17,7 @@ export const ListItem = (props) => {
           {props.author}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "gray",
   },
-})
+});
